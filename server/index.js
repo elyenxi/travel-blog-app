@@ -3,6 +3,7 @@ import 'colors';
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import postRoutes from './routes/postRouter.js';
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -23,11 +24,14 @@ const server = async (app) => {
       console.log(`
     🚀 Server is running
     🔉 Listening on port ${PORT}
+    📭 Local: http://localhost:${PORT}/posts
   `)
     );
   } catch (error) {
     console.log(error.message);
   }
 };
+
+app.use('/posts', postRoutes);
 
 server(app);
