@@ -63,4 +63,21 @@ const deletePost = async (req, res) => {
   }
 };
 
-export { getPosts, getPost, createPost, updatePost, deletePost };
+const likePost = async (req, res) => {
+  const { id: _id } = req.params;
+
+  try {
+    const post = await Post.findById(_id);
+    const result = await Post.findByIdAndUpdate(
+      _id,
+      { likeCount: post.likeCount + 1 },
+      { new: true }
+    );
+
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+export { getPosts, getPost, createPost, updatePost, deletePost, likePost };

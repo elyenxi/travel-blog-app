@@ -30,7 +30,7 @@ const Form = ({ currentId, setCurrentId }) => {
       title: '',
       message: '',
       tags: '',
-      selectedFile: '',
+      selectedFile: null,
     });
   };
 
@@ -52,7 +52,7 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant='h6'>
-          {currentId ? `Editing "${post.title}"` : 'Creating a Memory'}
+          {currentId ? `Editing ${post.title}` : 'Creating a Memory'}
         </Typography>
         <TextField
           name='creator'
