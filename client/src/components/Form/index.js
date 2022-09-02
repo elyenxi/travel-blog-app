@@ -74,7 +74,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <TextField
           name='tags'
           variant='outlined'
-          label='Tags (coma separated)'
+          label='Tags (comma separated)'
           fullWidth
           value={postData.tags}
           onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })}
