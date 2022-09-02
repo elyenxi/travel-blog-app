@@ -1,0 +1,15 @@
+build
+coverage
+
+*.json
+*.yaml
+*.yml
+.env
+*.md
+*.d.ts
+
+.eslintignore
+.eslintrc.js
+.gitignore
+.prettierignore
+.prettierrc
