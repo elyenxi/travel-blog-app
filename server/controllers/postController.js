@@ -68,11 +68,7 @@ const likePost = async (req, res) => {
 
   try {
     const post = await Post.findById(_id);
-    const result = await Post.findByIdAndUpdate(
-      _id,
-      { likeCount: post.likeCount + 1 },
-      { new: true }
-    );
+    const result = await Post.findByIdAndUpdate(_id, { likeCount: post.likeCount + 1 }, { new: true });
 
     res.status(200).json(result);
   } catch (error) {
