@@ -44,7 +44,7 @@ const Form = ({ currentId, setCurrentId }) => {
   return (
     <Paper className={classes.paper}>
       <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant='h6'>{currentId ? `Editing ${post.title}` : 'Creating a Memory'}</Typography>
+        <Typography variant='h6'>{currentId ? `Update ${post.title}` : 'Create a blog'}</Typography>
         <TextField
           name='creator'
           variant='outlined'
