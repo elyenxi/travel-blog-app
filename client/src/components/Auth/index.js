@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Avatar, Button, Container, Grid, Paper, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { GoogleLogin } from 'react-google-login';
 import Input from './Input';
 import useStyles from './styles';
+import Icon from './icon';
 
 const Auth = () => {
   const classes = useStyles();
@@ -19,6 +21,10 @@ const Auth = () => {
     setIsSignUp((prevIsSignUp) => !prevIsSignUp);
     handleShowPassword(false);
   };
+
+  const googleSuccess = async () => {};
+
+  const googleFailure = async () => {};
 
   return (
     <Container component='main' maxWidth='xs'>
@@ -47,10 +53,30 @@ const Auth = () => {
               <Input name='confirmPassword' label='Repeat Password' type='password' handleChange={handleChange} />
             )}
           </Grid>
+
           <Button className={classes.submit} color='primary' variant='contained' type='submit' fullWidth>
-            {isSignUp ? 'Sign Up' : 'Sing In'}
+            {isSignUp ? 'Sign Up' : 'Sign In'}
           </Button>
-          <Grid container justify='flex-end'>
+          <GoogleLogin
+            clientId='406772066112-ui1k0954nbthqomsprd44vnq8rv26t1l.apps.googleusercontent.com'
+            render={(renderProps) => (
+              <Button
+                className={classes.googleButton}
+                color='primary'
+                variant='contained'
+                startIcon={<Icon />}
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+                fullWidth
+              >
+                Google Sign In
+              </Button>
+            )}
+            onSuccess={googleSuccess}
+            onFailure={googleFailure}
+            cookiePolicy='single_host_origin'
+          />
+          <Grid container justifyContent='flex-end'>
             <Grid item>
               <Button onClick={switchMode}>
                 {isSignUp ? `Already have an account? Sign In.` : `Don't have an account? Sign Up.`}

@@ -15,15 +15,17 @@ const Input = ({ autoFocus, half, label, name, type, handleChange, handleShowPas
       fullWidth
       required
       InputProps={
-        name === 'password' && {
-          endAdornment: (
-            <InputAdornment position='end'>
-              <IconButton onClick={handleShowPassword}>
-                {type === 'password' ? <Visibility /> : <VisibilityOff />}
-              </IconButton>
-            </InputAdornment>
-          )
-        }
+        name === 'password'
+          ? {
+              endAdornment: (
+                <InputAdornment position='end'>
+                  <IconButton onClick={handleShowPassword}>
+                    {type === 'password' ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              )
+            }
+          : null
       }
     />
   </Grid>
