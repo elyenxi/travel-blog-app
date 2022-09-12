@@ -3,7 +3,8 @@ import 'colors';
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
-import postRoutes from './routes/postRouter.js';
+import postRoutes from './routes/postRoute.js';
+import userRoutes from './routes/userRoute.js';
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -32,5 +33,6 @@ const server = async (app) => {
 };
 
 app.use('/posts', postRoutes);
+app.use('/user', useRoutes);
 
 server(app);
